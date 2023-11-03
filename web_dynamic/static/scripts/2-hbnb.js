@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  const ip = 'http://' + window.location.hostname;
   let selectedAmenities = {};
   $(document).on("change", "input[type=checkbox]", function () {
     if (this.checked) {
@@ -14,7 +15,7 @@ $(document).ready(function () {
     }
   });
 
-  $.get("http://0.0.0.0:5001/api/v1/status/", function (data) {
+  $.get(ip + ":5001/api/v1/status/", function (data) {
     if (data.status === "OK") {
       $("#api_status").addClass("available");
     } else {
