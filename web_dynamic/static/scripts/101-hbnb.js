@@ -65,19 +65,23 @@ $(document).ready(function () {
     }
   );
 
-  $('.reviewSpan').click(function (event) {
-    $.get(ip + ':5001/api/v1/places/' + $(this).data("id") + '/reviews', function (data) {
-      let spanText = $('.reviewSpan').text();
+  $(document).on(
+    'click',
+    '.reviewSpan',
+    function () {
+      let article = $(this).closest('article');
+      let spanText = $(this).text();
+      console.log(spanText);
       if (spanText === 'show') {
+        $.get(ip + ':5001/api/v1/places/' + $(this).data("id") + '/reviews', function (data) {
         for (const review of data) {
-          $('.reviews ul').append(`<li>${review.text}</li>`);
-        }
-        $('.reviewSpan').text('hide');
+          article.find('.reviews ul').append(`<li><p>${review.text}</p></li>`);
+        }});
+        $(this).text('hide');
       } else {
-        $('.reviews ul').empty();
-        $('.reviewSpan').text('show');
+        article.find('.reviews ul').empty();
+        $(this).text('show');
       }
-    });
   });
 
   $.get(ip + ':5001/api/v1/status/', function (data) {

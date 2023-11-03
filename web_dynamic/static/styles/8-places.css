@@ -98,3 +98,22 @@
 .user {
   margin-bottom: 1.5%;
 }
+
+.description {
+  margin-bottom: 20px;
+}
+
+.places .reviews h2{
+  font-size: 16px;
+  border-bottom: #ddd 1px solid;
+  text-align: start;
+  padding-bottom: 10px;
+}
+
+.places .reviews h2 .reviewSpan{
+  cursor: pointer;
+}
+
+.reviews ul {
+  padding-left: 15px;
+}
